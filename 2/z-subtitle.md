@@ -1,0 +1,3 @@
+---
+subtitle: Inventory User Manual
+---

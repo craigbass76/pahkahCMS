@@ -1,0 +1,252 @@
+/*
+Theme Name: LBM LIFT OFF Template: 11-18-2022
+*/
+
+@font-face {font-family: PlexSans;src: url(./fonts/IBMPlexSans-Regular.ttf);}
+@font-face {font-family: PlexSansBold;src: url(./fonts/IBMPlexSans-Bold.ttf);}
+@font-face {font-family: PlexSansEM;src: url(./fonts/IBMPlexSans-Italic.ttf);}
+@font-face {font-family: PlexSansEMBold;  src: url(./fonts/IBMPlexMono-BoldItalic.ttf);}
+@font-face {font-family: PlexMono;src: url(./fonts/IBMPlexMono-Regular.ttf);}
+@font-face {font-family: PlexSansLight;  src: url(./fonts/IBMPlexSans-ExtraLight.ttf);}
+
+
+body {font-family: "PlexSans"; color: #000; line-height:1.25em;padding:.25em;width:99%;margin-left:auto;margin-right:auto;}
+
+em {font-family: PlexSansEM;}
+strong {font-family: PlexSansBold;}
+strong em {font-family:PlexSansEMBold;}
+p{margin-left:3em;margin-top:1em;}
+
+/*---------------------------------------- NAV (also known as Table of Contents) -----------------------------------------*/
+
+nav {position:relative;width:22%;float:left;background:#fafafa;border-radius:5px;}
+nav ul {margin-top:4em;list-style-type: none; width:100%;float:left;margin-left:-30px;}
+
+nav ul li {position:relative; margin: 5px 0px 0px 10px;}
+
+nav ul li ul {list-style-type: none; width:100%;margin-top:0em;}
+nav ul li ul li {color:#000;width:90%;position:relative; float:left;}
+nav ul li ul li a {border:none;font-weight:100;}
+nav ul li ul li a::after {font-size:1em;width:2em;}
+nav ul li ul li ul {margin-top:.2em;}
+nav ul li ul li ul li a::after {float:right;}
+nav code {background:none;}
+
+nav a {text-decoration:none;outline:none;color:#000;}
+nav a:visited{text-decoration:none;outline:none;color:#000;}
+
+nav.followMe {width:23%;position: fixed;font-size:.85em;}
+nav.followMe ul {margin-left:-1.5em;width:100%;}
+nav.followMe ul li ul{margin-left:0em;}
+
+a.navLinkPDF{text-decoration:none;outline:none;color:#FF0000;}
+
+/*
+nav.followMe { position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  margin-bottom: 3em;
+  }
+nav.followMe ul {width:80%;float:right; position: relative; }
+
+nav.followMe ul li {float:left; position: relative; width:10%; }
+*/
+/*-------------------------------------------------------------------------------------------------------------------------*/
+#content{position: relative; width:100%;}
+#manualcontent{width:78%; position:relative; float:right;}
+#manualcontent a{text-decoration:none; color:#aaa;}
+header{margin-left:1%; margin-top:0;/*background: #0000ff;*/position:relative;width:74%;float:left;}
+/*header{width:64%; position:relative; float:left;border-left: 1px solid #aaa;background: #0000ff;margin-top:0;margin-left:2em;}*/
+
+h1.title {font-weight:100;font-size:2.5em;line-height:1em; padding-left:1em;color:#87898C;padding-top:em;}
+p.subtitle{margin-left:1em;margin-bottom:1.5em;font-weight:bold;}
+p.author{margin-left:1em;margin-top:0; margin-bottom:0;font-weight:bold;}
+p.email{margin-left:1em;margin-top:0; margin-bottom:0;font-weight:bold;}
+p.email a {color:#000;}
+p.date{margin-left:1em;margin-top:0; margin-bottom:0;font-weight:bold;}
+
+#contentsbox { position:relative; float:left; width:100%;margin-top:1.5em;margin-bottom:1.5em;}
+#contentsbox p {font-weight:100;font-size:2.5em;}
+#contentsbox img {width:80%;}
+
+#footer{position:relative; width:40%; margin-left:20%; text-align:center;margin-top:3em;}
+#footer img {width:20%; position:relative; margin-left:auto; margin-right:auto;}
+
+h1 {string-set:title content();}
+
+h2 {
+ max-width:50%; line-height:2em; vertical-align: middle;margin-top:1em;padding-left:.25em; font-size:.9em; margin-left:.5em; background-color:#fff;
+ border-radius:5px;
+ border-top: 1px solid #eee;
+ border-left: 1px solid #eee;
+ border-right: 1px solid #aaa;
+ border-bottom: 1px solid #aaa;
+ font-size:1.5em;
+ font-family: PlexSansBold;
+ }
+
+h3 {font-size:1.35em;  color:#000;vertical-align: middle;margin-top:1em;padding:.25em; max-width:85%;
+ margin-left:.75em;font-family: PlexSansBold;
+}
+h4 {font-size:1.3em; margin-left:1em;font-family: PlexSansBold;padding:0;}
+h5 {font-size:1.2em;margin-left:1.25em;font-family: PlexSansBold;}
+h6 {font-size:1.1em;margin-left:1.5em;font-family: PlexSansBold;}
+
+h1 code {background:none;}
+h2 code {background:none;}
+h3 code {background:none;}
+h4 code {background:none;}
+h5 code {background:none;}
+h6 code {background:none;}
+
+.inline{height:1em; display:inline;float:left;}
+
+.bigImage {width:100%;}
+.bigImage img {width:100%;}
+
+.imgDIV {width:60%; margin-left:20%;margin-top:2em;border:1px solid #fff;position:relative;overflow:hidden;}
+.imgDIV p { width:100%; margin-left:0%;}
+
+.imgDIVimgl{ width:40%; position:relative;float:left;}
+.imgDIVimgl img {width:100%;position:relative;float:left;border-radius:5px;}
+.imgDIVtextr{ width:50%; position:relative;float:right;}
+
+.imgDIVimgr{ width:40%; position:relative;float:right;}
+.imgDIVimgr img {width:100%;position:relative;float:left;border-radius:5px;}
+.imgDIVtextl{ width:55%; position:relative;float:left; }
+
+
+.imgh {width:100%; overflow:hidden;}
+.imgh img {width: auto; max-height: 100%;}
+
+a:link{outline:none;color:#000;font-weight:bold;}
+
+pre {font-size:.95em; margin-left:.25em; background-color:#999;padding:.25em;
+            white-space: pre-wrap;
+            word-wrap: normal;
+            width:80%;margin-left:5em;}
+code {font-size:.95em;background-color:#999;color:#fff;padding:2px;}
+
+/* I'm usually using the pre and code below, but currently using them to call attention to something, hence bright red */
+
+/*
+pre code{background-color:#eee; color:#000;}
+
+pre.sourceCode{color:initial;}
+*/
+/* ------------------- Lists --------------------------*/
+
+/* Top level is normal, next level is just bullets, no numbers */
+
+ul {list-style-type: none;margin-left:1em;}
+ul li {font-weight:normal;margin-top:.3em;}
+ul li ul {list-style-type: none;}
+ul li ul li {margin-left:-.25em;font-weight:lighter;}
+ul li ul li ul {list-style-type: none;}
+
+/* Top level is bold, next level is just bullets, no numbers */
+.b ul li {margin-left:-.25em;font-weight:bold;margin-top:.2cm;}
+.b ul li ul {list-style-type: disc;}
+.b ul li ul li {margin-left:-.25em;font-weight:lighter;}
+.b ul li ul li ul {list-style-type: none;}
+
+/* Top level is bold, next level is numbered */
+.bwn ul li {margin-left:-.25em;font-weight:bold;margin-top:.2em;}
+.bwn ul li ul {list-style-type: decimal;}
+.bwn ul li ul li {margin-left:-.25em;font-weight:lighter;}
+.bwn ul li ul li ul {list-style-type: none;}
+
+/* Top level is bold numbers, next level is regular bullets */
+.bn ul {list-style-type: decimal;}
+.bn ul li {margin-left:-.25em;font-weight:bold;margin-top:.2em;}
+.bn ul li ul {list-style-type: disc;}
+.bn ul li ul li {margin-left:-.25em;font-weight:lighter;}
+.bn ul li ul li ul {list-style-type: none;}
+
+/*------------------- Definitions ------------------------------*/
+/* For lists of terms and definitions */
+
+.defs {margin-left:1em;}
+.defs p {margin-left:2em; margin-top:0em;}
+.defs h5 {font-size:1.1em;margin-top:0em; margin-bottom:0em;}
+.defs h6 {font-size:1em;margin-top:0em; margin-bottom:0em;}
+
+.defsalt {margin-left:0em;}
+.defsalt p {margin-left:.1em; margin-top:0em;color:#999;}
+.defsalt h5 {font-size:1em;margin-top:0em; margin-bottom:0em;color:#999;}
+.defsalt h6 {font-size:1em;margin-top:0em; margin-bottom:0em;color:#999;}
+
+
+dl dt {margin-top:1em;font-weight: bold;-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;}
+dl dt dd {font-weight: normal;}
+
+
+/* Top level is bold, next level is nothing, then bold, italics, nothing */
+/* Seemed easier than dl, dt, and dd, once I got into it a ways */
+.defs{margin-top:1em;}
+.defs ul {margin-left:-.75em;}
+.defs ul li {margin-top:.25em;font-family: PlexSansBold;}
+.defs ul li ul {list-style-type: none;margin-left:-.35em;}
+.defs ul li ul li {margin-left:-.25em;font-family: PlexSans;}
+.defs ul li ul li ul {list-style-type: none;}
+.defs ul li ul li ul li {font-weight:bolder;}
+.defs ul li ul li ul li ul {list-style-type: none;}
+.defs ul li ul li ul li ul li{list-style-type: none; font-weight:normal;font-style: italic;}
+.defs ul li ul li ul li ul li ul {list-style-type: none;}
+.defs ul li ul li ul li ul li ul li{list-style-type: none; font-style: normal; font-weight:normal;}
+
+.defsalt ul {margin-left:-1.25em;margin-top:-.25em;}
+.defsalt ul li {margin-top:.25em;font-family: PlexSansBold; color:#999;}
+
+.terms ul { -webkit-column-count: 2; -moz-column-count: 2; column-count: 2;}
+.terms ul li {margin-left:-1.5em;}
+.terms ul li ul li {color:#888;margin-top:-.25em;}
+
+table {
+  border-collapse: collapse; max-width:90%; margin-left:10%;}
+td, th {
+  border: 1px solid #ddd;padding: 10px;
+}
+
+blockquote{color:#fff; background-color:#777;padding:2mm;border-radius:4px;border:1px solid #000;width:80%; margin-left:10%;}
+blockquote pre, blockquote code {background-color:#555;}
+blockquote p {width:90%;margin-left:0%;}
+
+
+.pb { page-break-before: always; }
+.space {height:1em;}
+
+/*--------------------------------------------
+08-14-2019
+The Python looks good here, the Bash not
+so much. So we're leaving them black, at
+least for now, to match the original template
+--------------------------------------------*/
+
+
+code.sourceCode.python {color:#d49173;}
+.op {color:#89d473;}
+.dv {color: #ff0000;}
+code.sourceCode.bash {color:#739ed4;}
+.ex{color:#b473d4;}
+code.sourceCode.ruby {color:#d49173;}
+.op {color:#89d473;}
+.dv {color: #ff0000;}
+
+/*--------------------------------------------
+08-14-2019
+Here I was trying to dork with image captions,
+but they keep showing up on the left
+--------------------------------------------*/
+
+/*
+figure {
+  display: table;
+}
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  float:right;
+}
+*/

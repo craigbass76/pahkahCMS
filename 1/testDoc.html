@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <link rel="icon" href="../images/liftoffLogoIcon.png">
+  <title>A sample markdown file: LBM LIFT OFF</title>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Craig Parker" />
+  <title>PahkahCMS Readme</title>
+  <link rel="stylesheet" href=".././styleWEB.css" />
+</head>
+<body>
+<!--
+<header id="title-block-header">
+<h1 class="title">PahkahCMS Readme</h1>
+<p class="subtitle">A sample markdown file</p>
+<div id="header_bottom_text">
+<p class="author">Craig Parker</p>
+<p class="date">Dec 09, 2022</p>
+</div>
+</header>
+-->
+<nav id="TOC">
+ <div id="contentsbox"><a href="./"><img src="../images/cover-image.png"></a></div>
+<!-- <div id="contentsbox"><img src="../images/liftoffLogo.svg" style="width:100%;"</div> -->
+<ul>
+<li><a href="#images">Images</a></li>
+<li><a href="#table-of-contents-problem">Table of Contents Problem</a></li>
+<li><a href="#lists-over-page-breaks-issue">Lists over Page Breaks Issue</a></li>
+<li><a href="#heading-examples">Heading Examples</a>
+<ul>
+<li><a href="#h3">H3</a>
+<ul>
+<li><a href="#h4">H4</a></li>
+</ul></li>
+<li><a href="#blank-lines-required">Blank Lines Required</a></li>
+</ul></li>
+<li><a href="#lists">Lists</a>
+<ul>
+<li><a href="#normal-list">Normal List</a></li>
+<li><a href="#other-list-styles">Other List Styles</a></li>
+<li><a href="#other-items-we-might-run-into">Other Items We Might Run Into</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#forcing-page-breaks">Forcing Page Breaks</a></li>
+</ul></li>
+</ul>
+</nav>
+<div id="manualcontent">
+<h2 id="images">Images</h2>
+<p>Floating images are hard, especially when I'm outputting PDF and HTML. So I've decided to have either one big image, or split a section in two with the image on the right or left, and the text opposite. Here are two examples of splits:</p>
+<div class="imgDIV">
+<div class="imgDIVimgr">
+<p><img src="../images/1/darth-maul-killed-my-kids-sm.png" /></p>
+</div>
+<div class="imgDIVtextl">
+<div class="space">
+
+</div>
+<p>Darth Maul killed my kids at LegoLand in Florida. They were thrilled with the picture (and are now ages 18 and 16)</p>
+</div>
+</div>
+<div class="imgDIV">
+<div class="imgDIVimgl">
+<p><img src="../images/1/parker-kids-at-at.png" /></p>
+</div>
+<div class="imgDIVtextr">
+<div class="space">
+
+</div>
+<p>Here's one with the image on the left, but it's one bigger div, with the image and text in smaller right and left divs.</p>
+</div>
+</div>
+<div class="space">
+
+</div>
+<p>One issue I'm having with this is that I need a border (white) or the <code>imgDIV</code> goes haywire. It's something dumb, I'm sure, I just haven't found the issue yet.</p>
+<h2 id="table-of-contents-problem">Table of Contents Problem</h2>
+<p>There was one wee little issue, with the table of contents. When a list (the H3 headings are the list items) went over a page break, the items on the first page's part got bumped up a bit.</p>
+<p>The fix is to edit <code>boxes.py</code>. You'll have to hunt for it, but it's sitting in whichever directory WeasyPrint got installed into. Try this to find it:</p>
+<pre><code>sudo find / -name boxes.py</code></pre>
+<p>It should be somewhere like: <code>/usr/local/lib/python3.x/dist-packages/weasyprint/formatting_structure</code> (on a Linux machine), or on a Mac: <br /> <code>/usr/local/lib/python3.x/site-packages/weasyprint/formatting_structure/</code></p>
+<p>We're looking for something in the vicinity of line 320-350 of that file (which may change in future versions) that reads:</p>
+<pre><code>if (start or end) and old_style == self.style:</code></pre>
+<p>It essentially means <em>"if something is equal to something else"</em>, and we need it to say <em>"if something is NOT equal to something else"</em> instead. We do it by replacing the first of those equals signs with an exclamation point, like this:</p>
+<pre><code>if (start or end) and old_style != self.style:</code></pre>
+<p>Rendering the TOC should work fine after this change.</p>
+<h2 id="lists-over-page-breaks-issue">Lists over Page Breaks Issue</h2>
+<p>This is something the WeasyPrint community is still looking into (as of 3/2020)... If there's a list that goes over a page break, the first list item on the next page of the list looks a little weird. It's almost like the number/bullet is bumped down a bit from the contents of that number/bullet point. I kind of work around it for now (like, by making lower-level headings instead of list items), but it has been labeled a bug by the community. Someone will fix it.</p>
+<h2 id="heading-examples">Heading Examples</h2>
+<h3 id="h3">H3</h3>
+<p>This is <strong>H3</strong></p>
+<h4 id="h4">H4</h4>
+<p>This is <strong>H4</strong></p>
+<h5 id="h5">H5</h5>
+<p>This is <strong>H5</strong></p>
+<h6 id="h6">H6</h6>
+<p>This is <strong>H6</strong></p>
+<h3 id="blank-lines-required">Blank Lines Required</h3>
+<p>That's a joke, really. Blank lines aren't required between things so much, like they are with the LaTeX template I cooked up. Because it's easier to read the Markdown though, I'll probably just keep doing it.</p>
+<p>A blank line is <strong><em>still</em></strong> required before a bulleted list though. And speaking of lists...</p>
+<h2 id="lists">Lists</h2>
+<p>By using <code>:::dubbah</code> ahead of a list, and <code>:::</code> after it (with blank lines above and below each), we are essentially create a <code>&lt;div class="dubbah"&gt; &lt;/div&gt;</code> tags in the resulting HTML. This means we can create a different list style for each of those <code>div</code> classes. I've made a few, but the sky's the limit.</p>
+<h3 id="normal-list">Normal List</h3>
+<p>This is the default list style:</p>
+<ul>
+<li>Bullet 1 (top-level)
+<ul>
+<li>#1 Level 2 Bullet</li>
+<li>#2 Level 2 Bullet</li>
+<li>#3 Level 2 Bullet</li>
+</ul></li>
+<li>Bullet 2 (top-level)
+<ul>
+<li>#1 Level 2 Bullet</li>
+<li>#2 Level 2 Bullet</li>
+<li>#3 Level 2 Bullet
+<ul>
+<li>Level 4
+<ul>
+<li>Level 5
+<ul>
+<li>Level 6
+<ul>
+<li>Level 7
+<ul>
+<li>Level 8
+<ul>
+<li>Level 9</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Bullet 4 (top-level)</li>
+<li>Bullet 5 (top-level)
+<ul>
+<li><p>Another #1 point</p>
+<pre><code>A code block nested in a list</code></pre></li>
+</ul></li>
+<li>Bullet 6 (top-level)</li>
+</ul>
+<h3 id="other-list-styles">Other List Styles</h3>
+<p>Look in the <code>css</code> file to see the different styles that are set up. Try them here, by changing the <code>:::b</code> to something else, like <code>:::defs</code>.</p>
+<div class="b">
+<ul>
+<li>Bullet 1 (top-level)
+<ul>
+<li>#1 Level 2 Bullet</li>
+<li>#2 Level 2 Bullet</li>
+<li>#3 Level 2 Bullet</li>
+</ul></li>
+<li>Bullet 2 (top-level)
+<ul>
+<li>#1 Level 2 Bullet</li>
+<li>#2 Level 2 Bullet</li>
+<li>#3 Level 2 Bullet
+<ul>
+<li>Level 4
+<ul>
+<li>Level 5
+<ul>
+<li>Level 6
+<ul>
+<li>Level 7
+<ul>
+<li>Level 8
+<ul>
+<li>Level 9</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Bullet 4 (top-level)</li>
+<li>Bullet 5 (top-level)
+<ul>
+<li><p>Another #1 point</p>
+<pre><code>A code block nested in a list</code></pre></li>
+</ul></li>
+<li>Bullet 6 (top-level)</li>
+</ul>
+</div>
+<p>The <code>:::defs</code> typew list, by the way, is one I'm using and still twaeking a lot. I'm on the fence about styling a list ofr this, or styling different sized headings for it. I've got both options going in the <code>css</code> file until I make up my mind.</p>
+<section id="other-items-we-might-run-into" class="horiz">
+<h3>Other Items We Might Run Into</h3>
+<p>Need a landscape page all of a sudden in your PDF? Check out the <code>.horiz</code> declaration in the <code>css</code> and in this corresponding markdown.</p>
+<p>Here is a horizontal line:</p>
+<hr />
+<blockquote>
+<p>Here is a block quote: Blahdy blah blah MOO I'm a goat.</p>
+</blockquote>
+<blockquote>
+<h5 id="and-here-is-an-h5-header-inside-a-quote-with-a-quoted-list-under-it">And here is an H5 header, inside a quote, with a quoted list under it:</h5>
+<ol type="1">
+<li>ONE list item! Ah ah ah...</li>
+<li>TWO list items! Ah ah ah...</li>
+</ol>
+<p>Now for good measure, let's throw in some example code:</p>
+<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);</code></pre>
+</blockquote>
+</section>
+<div class="pb">
+
+</div>
+<h3 id="tables">Tables</h3>
+<p>Eghads... Making tables work in LaTeX is a ruckus, Doing them this way (using an HTML/CSS template with WeasyPrint) lets them just work. There's no LaTeX tinkering required, whatsoever. I've written a PHP app that keeps track of chord charts for songs, and uses Markdown tables. Here's what one looks like:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><em>Intro</em></td>
+<td></td>
+<td>2</td>
+<td>5</td>
+<td>1</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>5-/1</td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+<td>3/6</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>2</td>
+<td>5</td>
+<td>1/6</td>
+<td>2/5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><em>Out</em></td>
+<td></td>
+<td>1/6</td>
+<td>2</td>
+<td>5</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="forcing-page-breaks">Forcing Page Breaks</h3>
+<p>You may not like where something lands, page-wise, and want to kick it down to the next one. There's a div class for that, called <code>pb</code>. To do a page break, just use the same kind of div class hack we were doing earlier with lists:</p>
+<pre><code>:::pb
+:::</code></pre>
+<p>To see how this works, take a looksie at the raw Markdown, just above the <strong>### Forcing Page Breaks</strong> heading. I did it there. You'll be able to see that there's a break right before that heading in the PDF.</p>
+
+<div id="footer"> </div>
+
+</div><!-- manualcontent -->
+</body>
+</html>
