@@ -12,7 +12,7 @@ We need Bash, Pandoc, and Weasyprint installed in order to run the scripts provi
 
 ## File/Directory Layout
 
-I've got a root directory where all the shell scripts are, then I've got `md` and a few subdirectories. The subdirectories in `md` mirror what's in `./`. There is one for each major section of the docs. Each of those subdirectories must contain a `z-subtitle.md` file. 
+I've got a root directory where all the shell scripts are, then I've got `md` and a few subdirectories. The subdirectories in `md` mirror what's in `./`. There is one for each major section of the docs. Each of those subdirectories must contain `z-subtitle.md` and `z-sectionDesc` files. 
 
 ```
 ├── ap
@@ -52,7 +52,7 @@ Since this is supposed to create a whole documentation website, but still be som
 :::defs
 
 - `createEachSectionFile.sh`
-  - This creates an `html` and `pdf` for each file in whatever subdirectory of `./md` we specify.
+  - This creates an `html` and `pdf` for each file in whatever subdirectory of `./md` we specify. This script ignores any files starting with `z` or `x`. 
 - `createIndividual.sh`
   - This script just creates a single `html` and `pdf` of a `md` file. It's handy for when you're working on a particular file and want to see what it looks like, as you go, in both HTMl and PDF format.
 - `createSection.sh`
@@ -70,7 +70,9 @@ I'm used to Apache servers, so I stuck with what I know. The commented out `rsyn
 
 ## The Workflow
 
-Using this setup, I've developed a sort of workflow. When I'm working on a single document, I run `createIndividual.sh`. I'll have the markdown file open (I liked the Atom editor, and hate Microsoft, so I'm using VSCodium now) and the `pdf`. When I run the script, my PDF autoatically updates. Once I think it's good to go, I run `createEachSectionFile.sh`, which uploads everything to my EC2 server. 
+Using this setup, I've developed a sort of workflow. When I'm starting out a new doc, I grab `blank.md` and save it out as `xFileName.md`. This means that when I run `createEachSectionFile.sh` it will be ignored, and this doc will be sort of like a draft. I can run `createIndividual.sh` on it, and the HTML/PDF will be created (and synched up to the server), but there will be no reference to them in the table of contents. When the doc is good to go, I rename it and can run `createEachSectionFile.sh`. Note that any files whose names start with `x` get deleted near the end of that script. There is a bit of juggling if I have to make a section that's got a draft I'm currently working on (if I want a local PDF or HTML to look at) but this seems the best way so far. Itherwise, I'd make a section, then have to go on the live site and comment out links to bad/draft docs in the sidebar.
+
+When I'm working on a single document, I run `createIndividual.sh`. I'll have the markdown file open (I liked the Atom editor, and hate Microsoft, so I'm using VSCodium now) and the `pdf`. When I run the script, my PDF autoatically updates. Once I think it's good to go, I run `createEachSectionFile.sh`, which uploads everything to my EC2 server. 
 
 All of the commands I think anyone would need are in one of those shell scripts, but you may have to play around to make them fit your own workflow. Check out the Markdown file in the `./md/1` and its corresponding `./1` HTML/PDF directory for examples of what I've done in the CSS. Take it and run with it. I'm curious to see what other folks can make it do.
 
