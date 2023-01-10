@@ -17,13 +17,12 @@
 <p class="subtitle">A sample markdown file</p>
 <div id="header_bottom_text">
 <p class="author">Craig Parker</p>
-<p class="date">Dec 09, 2022</p>
+<p class="date">Jan 10, 2023</p>
 </div>
 </header>
 -->
 <nav id="TOC">
- <div id="contentsbox"><a href="./"><img src="../images/cover-image.png"></a></div>
-<!-- <div id="contentsbox"><img src="../images/liftoffLogo.svg" style="width:100%;"</div> -->
+ <div id="contentsbox"><a href="./"><img src="../images/WHT.svg"></a></div>
 <ul>
 <li><a href="#images">Images</a></li>
 <li><a href="#table-of-contents-problem">Table of Contents Problem</a></li>
@@ -45,36 +44,36 @@
 <li><a href="#forcing-page-breaks">Forcing Page Breaks</a></li>
 </ul></li>
 </ul>
+<br />
+<ul><li><em>Last Edited: Jan 10, 2023</em></li></ul>
+<ul><li><a href="testDoc.pdf" class="navLinkPDF">Download a PDF</a></li></ul>
 </nav>
+
 <div id="manualcontent">
 <h2 id="images">Images</h2>
 <p>Floating images are hard, especially when I'm outputting PDF and HTML. So I've decided to have either one big image, or split a section in two with the image on the right or left, and the text opposite. Here are two examples of splits:</p>
-<div class="imgDIV">
-<div class="imgDIVimgr">
+<div class="cont100">
+<div class="cont50">
 <p><img src="../images/1/darth-maul-killed-my-kids-sm.png" /></p>
 </div>
-<div class="imgDIVtextl">
+<div class="cont50">
 <div class="space">
 
 </div>
 <p>Darth Maul killed my kids at LegoLand in Florida. They were thrilled with the picture (and are now ages 18 and 16)</p>
 </div>
 </div>
-<div class="imgDIV">
-<div class="imgDIVimgl">
+<div class="cont100">
+<div class="cont50">
+<div class="space">
+
+</div>
+<p>This was the winter before the Florida trip...</p>
+</div>
+<div class="cont50">
 <p><img src="../images/1/parker-kids-at-at.png" /></p>
 </div>
-<div class="imgDIVtextr">
-<div class="space">
-
 </div>
-<p>Here's one with the image on the left, but it's one bigger div, with the image and text in smaller right and left divs.</p>
-</div>
-</div>
-<div class="space">
-
-</div>
-<p>One issue I'm having with this is that I need a border (white) or the <code>imgDIV</code> goes haywire. It's something dumb, I'm sure, I just haven't found the issue yet.</p>
 <h2 id="table-of-contents-problem">Table of Contents Problem</h2>
 <p>There was one wee little issue, with the table of contents. When a list (the H3 headings are the list items) went over a page break, the items on the first page's part got bumped up a bit.</p>
 <p>The fix is to edit <code>boxes.py</code>. You'll have to hunt for it, but it's sitting in whichever directory WeasyPrint got installed into. Try this to find it:</p>
@@ -287,9 +286,9 @@
 <p>You may not like where something lands, page-wise, and want to kick it down to the next one. There's a div class for that, called <code>pb</code>. To do a page break, just use the same kind of div class hack we were doing earlier with lists:</p>
 <pre><code>:::pb
 :::</code></pre>
-<p>To see how this works, take a looksie at the raw Markdown, just above the <strong>### Forcing Page Breaks</strong> heading. I did it there. You'll be able to see that there's a break right before that heading in the PDF.</p>
+<p>To see how this works, take a looksie at the raw Markdown, just above the <strong>### Tables</strong> heading. I did it there. You'll be able to see that there's a break right before that heading in the PDF.</p>
 
-<div id="footer"> </div>
+<div id="footer"></div>
 
 </div><!-- manualcontent -->
 </body>
