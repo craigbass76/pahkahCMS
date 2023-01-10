@@ -1,18 +1,19 @@
 ---
 subtitle: A sample markdown file 
+date: Jan 10, 2023
 ---
 
 ## Images
 
 Floating images are hard, especially when I'm outputting PDF and HTML. So I've decided to have either one big image, or split a section in two with the image on the right or left, and the text opposite. Here are two examples of splits:
 
-:::imgDIV
+:::cont100
 
-:::imgDIVimgr
+:::cont50
 ![](../images/1/darth-maul-killed-my-kids-sm.png)
 :::
 
-:::imgDIVtextl
+:::cont50
 :::space
 :::
 Darth Maul killed my kids at LegoLand in Florida. They were thrilled with the picture (and are now ages 18 and 16)
@@ -20,25 +21,21 @@ Darth Maul killed my kids at LegoLand in Florida. They were thrilled with the pi
 :::
 :::
 
-:::imgDIV
 
-:::imgDIVimgl
+:::cont100
+
+:::cont50
+:::space
+:::
+This was the winter before the Florida trip...
+
+:::
+
+:::cont50
 ![](../images/1/parker-kids-at-at.png)
 :::
 
-:::imgDIVtextr
-:::space
 :::
-Here's one with the image on the left, but it's one bigger div, with the image and text in smaller right and left divs.
-:::
-
-:::
-
-:::space
-:::
-
-
-One issue I'm having with this is that I need a border (white) or the `imgDIV` goes haywire. It's something dumb, I'm sure, I just haven't found the issue yet.
 
 ## Table of Contents Problem
 
