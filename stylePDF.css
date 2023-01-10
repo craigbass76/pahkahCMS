@@ -1,5 +1,5 @@
 /*
-Theme Name: Craig Pahkah's PDF Template: 11-10-2022
+Theme Name: PahkahCMS Template: 01-10-2023
 */
 
 @font-face {font-family: PlexSans;src: url(./fonts/IBMPlexSans-Regular.ttf);}
@@ -61,7 +61,7 @@ font-family: "PlexSans";
   @top-left {
    background: #000;
    color:#fff;
-   content: "LBM LIFT OFF ~ " string(title);
+   content: "PahkahCMS ~ " string(title);
    height: 1cm;
    text-align: center;
    width: auto;
@@ -111,7 +111,7 @@ font-family: "PlexSans";
   @top-left {
    background: #000;
    color:#fff;
-   content: "LBM LIFT OFF ~ " string(title);
+   content: "PahkahCMS ~ " string(title);
    height: 1cm;
    text-align: center;
    width: auto;
@@ -193,7 +193,7 @@ font-family: "PlexSans";
    font-variant: small-caps;
    background: #000;
    color:#fff;
-   content: "LBM LiftOff ~ " string(title);
+   content: "PahkahCMS ~ " string(title);
    height: 1cm;
    text-align: center;
    width: auto;
@@ -232,16 +232,21 @@ font-family: "PlexSans";
     }
   
 
-.horiz {page: landscape;}
-/*.pagevert {page: portrait;}*/
-   
+.horiz {
+    page: landscape;
+}
 
-body {font-family: "PlexSans"; color: #000; line-height:1.25em;padding:.25cm;}
+body {font-family: "PlexSans"; color: #333; line-height:1.25em;padding:.25cm;}
 
-em {font-family: PlexSansEM;}
-strong {font-family: PlexSansBold;}
+em {font-family: PlexSansEM;color:#000;}
+strong {font-family: PlexSansBold;color:#000;}
 strong em {font-family:PlexSansEMBold;}
-p{width:110%; margin-left:-5%;margin-top:0em;}
+p{width:100%; margin-left:0%;margin-top:0em;}
+
+/*hr{position:relative; float:left; width:100%;}*/
+hr { position:relative; float:left; width:100%;margin-bottom:.5cm;border: 0; height: 1px; background: #fff; background-image: linear-gradient(to right, #fff, #777, #fff);display:inline-block;}
+
+del {background:#ffff00;text-decoration:none}
 
 header{margin-left:1cm; margin-top:10cm;border-left: 1px solid #aaa;/*min-height:6.5cm;*/}
 
@@ -258,26 +263,79 @@ p.date{margin-left:1cm;margin-top:0; margin-bottom:0;font-weight:bold;}
 .bigImage {width:100%;}
 .bigImage img {width:100%;}
 
-.imgDIV {width:100%; margin-top:2em;border:1px solid #fff;position:relative;overflow:hidden;}
-.imgDIV p { width:100%; margin-left:0%;}
+figure {
+    max-width:50%;
+    float:right;
+}
+figure img {
+    vertical-align: top;
+    max-width:100%;
+    max-height:9cm;
+    border-radius:10px;
+    float:right
+}
+figure figcaption {
+    text-align: center;
+}
 
-.imgDIVimgl{ width:40%; position:relative;background:#ddd;float:left;}
-.imgDIVimgl img {width:100%;position:relative;float:left;border-radius:5px;}
-.imgDIVtextr{ width:50%; position:relative;float:right;}
 
-.imgDIVimgr{ width:40%; position:relative;float:right;}
-.imgDIVimgr img {width:100%;position:relative;float:left;border-radius:5px;}
-.imgDIVtextl{ width:55%; position:relative;float:left; }
+li img {
+    max-width:75%;
+    display: block;
+}
 
-a:link{outline:none;color:#000;font-weight:bold;}
+.cont100 {width:100%; float:left; margin-top:1em;}
+.cont50 {float:left; width:48%; margin-left:2%;}
+.cont50 figure{width:100%;}
+.cont50 img{max-width:100%;border-radius:10px;margin-top:-1em;}
+.cont50 p {max-width:100%;margin-top:1em;}
 
-code {font-size:.95em;color:#000;padding:2px;background-color: #ddd;}
+.cont75 {float:left; width:73%; margin-left:2%;}
+.cont75 figure{width:100%;}
+.cont75 img{max-width:100%;border-radius:10px;margin-top:-1em;}
+.cont75 p {max-width:100%;margin-top:1em;}
 
-pre {font-size:.95em; margin-left:.5cm; background-color:#999;padding:2px;
+.cont25 {float:left; width:23%; margin-left:2%;}
+.cont25 figure{width:100%;}
+.cont25 img{max-width:100%;border-radius:10px;}
+.cont25 p {max-width:100%;}
+
+
+.imgl {width:100%; margin:.5em; float:left;}
+.imgl p {width:50%;float:left;margin:0;}
+.imgl img { float:left; max-width:100%;margin-left:-4%;}
+
+.imgDIV {width:100%; float:left; margin-left: 5%; margin-top:1em;}
+.imgDIVimg{ width:40%; position:relative;float:left;}
+.imgDIVimg img {width:100%;}
+.imgDIVtext{ width:50%; position:relative;float:right;}
+
+.imgr {width:100%; float:left;position:relative;}
+.imgr p {width:48%;float:right;margin:0;position:relative;}
+.imgr img { float:right; max-width:100%;}
+
+.imglw {width:100%;margin-bottom:1em; }
+.imglw img { float:left; width:100%;}
+.imglw2 {width:120%; overflow:hidden; margin-left:-10%;}
+.imglw2 img { float:left; max-width:100%;}
+.imglw2 p {width:100%;margin-left:0%;}
+
+
+
+.imgh {width:100%; overflow:hidden;}
+.imgh img {width: auto; max-height: 100%;}
+
+a:link{outline:none;color:#000;text-decoration:none;}
+
+pre {font-size:.95em; margin-left:.5cm; background-color:#eee;padding:2px;
             white-space: pre-wrap;
             word-wrap: normal;
             width:80%;}
-pre code {font-size:.95em;color:#fff;background-color:#999;padding:2px;}
+code {font-size:.95em;background-color:#eee;padding:2px;}
+
+.example {position:relative; float:left; width:90%; margin-right:5%; border-radius:5px;background-color:#eee;padding:.5cm; margin-top:.5cm; margin-bottom:.5cm;}
+
+
 
 
 
@@ -285,6 +343,7 @@ pre code {font-size:.95em;color:#fff;background-color:#999;padding:2px;}
 
 /*
 pre code{background-color:#eee; color:#000;}
+
 pre.sourceCode{color:initial;}
 */
 /* ------------------- Lists --------------------------*/
@@ -315,6 +374,14 @@ ul li ul li ul {list-style-type: none;}
 .bn ul li ul li {margin-left:-.25cm;font-weight:lighter;}
 .bn ul li ul li ul {list-style-type: none;}
 
+ol {margin-left:-1cm;}
+ol li {margin-left:0; list-style-type:none;counter-increment:item;}
+ol>li:before {font-family: PlexSansBold; width:4em;
+  padding-right:.15cm;
+  margin-left:-.5cm;
+  text-align:left;
+  content:counter(item) ".";}
+
 h1 {string-set:title content();}
 
 h2 {
@@ -325,13 +392,13 @@ h2 {
  border-left: 1px solid #eee;
  border-right: 1px solid #aaa;
  border-bottom: 1px solid #aaa;
- /*page-break-before: always;*/
+ page-break-before: always;
  font-size:1.5em;
  font-family: PlexSansBold;
  }
 
 h3 {font-size:1.35em; margin-left:-1.5cm; color:#000;vertical-align: middle;margin-top:1em;padding:.25cm; max-width:85%; font-family: PlexSansBold;}
-h4 {font-size:1.3em; margin-left:-1.2cm;font-family: PlexSansBold;background: #efefef;}
+h4 {font-size:1.3em; margin-left:-1.2cm;font-family: PlexSansBold;}
 h5 {font-size:1.2em;margin-left:-1.2cm;font-family: PlexSansBold;}
 h6 {font-size:1.1em;margin-left:-1.1cm;font-family: PlexSansBold;}
 
@@ -346,7 +413,7 @@ h6 code {background:none;}
 /*------------------- Definitions ------------------------------*/
 /* For lists of terms and definitions */
 
-.defs {margin-left:1em;}
+.defs {margin-left:2em;}
 .defs p {margin-left:.1em; margin-top:0em;}
 .defs h5 {font-size:1.1em;margin-top:0em; margin-bottom:0em;}
 .defs h6 {font-size:1em;margin-top:0em; margin-bottom:0em;}
@@ -356,16 +423,49 @@ h6 code {background:none;}
 .defsalt h5 {font-size:1em;margin-top:0em; margin-bottom:0em;color:#999;}
 .defsalt h6 {font-size:1em;margin-top:0em; margin-bottom:0em;color:#999;}
 
+/*
+dl dt {margin-top:1em;height:2em;font-family: PlexSansBold;-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;}
+dl dt dd {font-weight: normal;margin-top:-3em;border: 1px solid #000;}
+*/
 
-dl dt {margin-top:1em;font-weight: bold;-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;}
-dl dt dd {font-weight: normal;}
+dt {float: left; width: 30%;text-align: right; padding: .25em; clear: left;}
+dd {float: left;width: 60%;padding: .25em 0;}
+dl:after {content:"";display:table;clear:both;}
+
+
+/*
+dl {width: 100%;padding: 0;margin-top:2em;}
+dl dt {float: left;width: 25%;padding: 0;margin: 0;font-family: PlexSansBold;min-height:2em;}
+dl dt dd {float: left;width: 75%;padding: 0;margin: 0}
+*/
+/*
+dl dt {float:left;clear:left;width: 110px;font-weight:bold;color:green;}
+dl dt::after {content: ":";}  
+dl dt dd {margin: 0 0 0 80px;padding: 0 0 0.5em 0;}
+*/
+/* Top level is bold, next level is nothing, then bold, italics, nothing */
+/* Seemed easier than dl, dt, and dd, once I got into it a ways */
+.defs{margin-top:1em;}
+.defs ol {margin-left:-1.5cm;}
+.defs ol li {margin-top:.1cm;font-family: PlexSansBold;}
+.defs ol li ul {list-style-type: none;margin-left:-.35cm;}
+.defs ol li ul li {margin-left:-.25cm;font-family: PlexSans;}
+.defs ol li ul li ul {list-style-type: none;}
+.defs ol li ul li ul li {font-weight:bolder;}
+.defs ol li ul li ul li ul {list-style-type: none;}
+.defs ol li ul li ul li ul li{list-style-type: none; font-weight:normal;font-style: italic;}
+.defs ol li ul li ul li ul li ul {list-style-type: none;}
+.defs ol li ul li ul li ul li ul li{list-style-type: none; font-style: normal; font-weight:normal;}
+
+.defsalt ul {margin-left:-1.25cm;margin-top:-.25em;}
+.defsalt ul li {margin-top:.25cm;font-family: PlexSansBold; color:#999;}
 
 
 /* Top level is bold, next level is nothing, then bold, italics, nothing */
 /* Seemed easier than dl, dt, and dd, once I got into it a ways */
 .defs{margin-top:1em;}
-.defs ul {margin-left:-.75cm;}
-.defs ul li {margin-top:.25cm;font-family: PlexSansBold;}
+.defs ul {margin-left:-1.5cm;}
+.defs ul li {margin-top:.1cm;font-family: PlexSansBold;}
 .defs ul li ul {list-style-type: none;margin-left:-.35cm;}
 .defs ul li ul li {margin-left:-.25cm;font-family: PlexSans;}
 .defs ul li ul li ul {list-style-type: none;}
@@ -377,10 +477,21 @@ dl dt dd {font-weight: normal;}
 
 .defsalt ul {margin-left:-1.25cm;margin-top:-.25em;}
 .defsalt ul li {margin-top:.25cm;font-family: PlexSansBold; color:#999;}
+/*
+.terms ul {column-count: 2; width:100%;padding:0;position:relative;}
+.terms ul li {margin-left:-10%;font-family: PlexSansBold;width:100%;outline:1px solid black;padding:0;position:relative;}
+.terms ul li ul li {color:#555;margin-left:.5em;width:100%;font-family: PlexSans;padding:0;clear:left;}
+*/
 
-.terms ul { -webkit-column-count: 3; -moz-column-count: 3; column-count: 3; width:120%;margin-left:-10%;}
-.terms ul li {margin-left:-1.3em;}
-.terms ul li ul li {color:#888;margin-top:-.25em;}
+.terms ul {position:relative;column-count: 2; width:100%;padding:0;}
+.terms ul li {position:relative;width:100%;font-family: PlexSansBold;}
+.terms ul li ul {position:relative;column-count: 1;width:100%;}
+.terms ul li ul li {position:relative;color:#555;width:90%;margin-left:5%;margin-top:0;font-family: PlexSans;}
+
+.terms dl {width:120%;margin-left:-10%;/*outline:1px solid black*/}
+.terms dt {float: left; width: 8%;text-align: right; padding: .25em; clear: left;font-family: PlexSansBold;}
+.terms dd {float: left;width: 89%;margin-left:1%;}
+.terms dl:after {content:"";display:table;clear:both;}
 
 
 /*---------------------------------------- NAV (also known as Table of Contents) -----------------------------------------*/
@@ -424,15 +535,20 @@ td, th {
   border: 1px solid #ddd;padding: 10px;
 }
 
+.tbl {width:70%;float:left;margin-right:15%; margin-left:15%;margin-bottom:.5cm;}
+.tbl table{width:100%; border:1px solid #ff0000;border-collapse: collapse;}
+.tbl td, th {border: 1px solid #ddd;padding: .25cm;}
+
 blockquote{color:#fff; background-color:#777;padding:2mm;border-radius:4px;border:1px solid #000;}
 blockquote pre, blockquote code {background-color:#555;}
 blockquote p {width:100%;margin-left:0%;}
-blockquote > h5 {margin-left:0;}
+blockquote strong {color:#fff;}
+blockquote em {color:#fff;}
 
-
+.blurb{padding:2em;background-color:#ddd;border-radius:4px;}
 
 .pb { page-break-before: always; }
-.space {position:relative; height:1em;width:100%;float:left;padding:1em;}
+.space {position:relative; height:1em;width:100%;padding:1em;}
 
 /*--------------------------------------------
 08-14-2019

@@ -51,29 +51,48 @@ Since this is supposed to create a whole documentation website, but still be som
 
 :::defs
 
-- `createEachSectionFile.sh`
-  - This creates an `html` and `pdf` for each file in whatever subdirectory of `./md` we specify. This script ignores any files starting with `z` or `x`. 
-- `createIndividual.sh`
+- `createOne.sh`
   - This script just creates a single `html` and `pdf` of a `md` file. It's handy for when you're working on a particular file and want to see what it looks like, as you go, in both HTMl and PDF format.
 - `createSection.sh`
-  - This creates one big HTML/PDF file for everything in the directory entered at the prompt, and names the file(s) $directoryName-user-guide
-- `create-pdf.sh`
-  - Simpler, this one only looks in the current directory, and just creates one `html` and `pdf` file from the related `md` file. I wrote it early on, before I was worried about managing a large number of docs.
-  
+  - This creates the "structural" HTML for a directory. It looks at the markdown directory, then makes the `index.html`, complete with a sidebar menu, for the corresponding HTML directory.
+- `createWholeSection.sh`
+  - This looks at a markdown directory, and then deletes and recreates all of the HTML and PDF (including the same stuff that `createSection.sh` makes) in the corresponding HTML directory.
+- `renameFiles.sh`
+  - A partial solution to the *What if I rename a file?* question, this will prompt for a directory, then a file, then a new file name. It changes the `.md`, `.html`, and `.pdf` filenames, and also updates the TOC in the `.html` file so that the PDF link points to the new filename.
+- `createIndex.sh`
+  - If you add a markdown directory, run this. It will take that into account and build a new, home page, `index.html` with an updated menu.
+- `sync-dirs.sh`
+  - This will sync the live copy of the documentation to your local copy. Be careful - I've added the `--delete` option, so if something doesn't exist in your local repository, it's going to be deleted from the live site.
 :::
 
 ## The Website
 
 Results here will vary... I am pushing all HTML, CSS, and images up to an EC2 instance (a LAMP box, essentially) but it sounds possible to push to some sort of S3 bucket that is configured to serve out a static page website, or push to some sort of Git-related site. 
 
-I'm used to Apache servers, so I stuck with what I know. The commented out `rsync` commands you see in `createEachSectionFile.sh` are pushing to my EC2 instance's `/var/www/html` directory, which I happen to have mounted up (via `sshfs`) to my `/home/craig/craigEC2` directory.
+I'm used to Apache servers, so I stuck with what I know. The commented out `rsync` commands you see in `sync-dirs.sh` are pushing to my EC2 instance's `/var/www/html` directory, which I happen to have mounted up (via `sshfs`) to my `/home/craig/craigEC2` directory.
 
 ## The Workflow
 
-Using this setup, I've developed a sort of workflow. When I'm starting out a new doc, I grab `blank.md` and save it out as `xFileName.md`. This means that when I run `createEachSectionFile.sh` it will be ignored, and this doc will be sort of like a draft. I can run `createIndividual.sh` on it, and the HTML/PDF will be created (and synched up to the server), but there will be no reference to them in the table of contents. When the doc is good to go, I rename it and can run `createEachSectionFile.sh`. Note that any files whose names start with `x` get deleted near the end of that script. There is a bit of juggling if I have to make a section that's got a draft I'm currently working on (if I want a local PDF or HTML to look at) but this seems the best way so far. Itherwise, I'd make a section, then have to go on the live site and comment out links to bad/draft docs in the sidebar.
+Using this setup, I've developed a sort of workflow. When I'm starting out a new doc, I grab `blank.md` and save it out as `xFileName.md`. This means that when I run `createSection.sh`, it will be ignored, and this doc will be sort of like a draft. `createWholeSection.sh` actually wipes the directory out, so if you need to be looking at a PDF, you'll have to recreate it with `createOne.sh` after running this one.
 
-When I'm working on a single document, I run `createIndividual.sh`. I'll have the markdown file open (I liked the Atom editor, and hate Microsoft, so I'm using VSCodium now) and the `pdf`. When I run the script, my PDF autoatically updates. Once I think it's good to go, I run `createEachSectionFile.sh`, which uploads everything to my EC2 server. 
+### My Own Workflow
 
-All of the commands I think anyone would need are in one of those shell scripts, but you may have to play around to make them fit your own workflow. Check out the Markdown file in the `./md/1` and its corresponding `./1` HTML/PDF directory for examples of what I've done in the CSS. Take it and run with it. I'm curious to see what other folks can make it do.
+When I'm working on a single document, I run `createOne.sh`. I'll have the markdown file open (I liked the Atom editor, and hate Microsoft, so I'm using VSCodium now) and the `pdf`. When I run the script, my PDF automatically updates. Once I think it's good to go, I get out of the `.md` file, run `renameFiles.sh`, then rename the one I'm working on to something that will get put into the live site. Then I run `sync-dirs.sh` and make it live.
+
+When I update a section's description, I go ahead and edit the relevant `z-sectionDesc.md`, then run `createSection.sh` to update. I can also use this if I've been working on a doc that I never named `x` something, and want to just get it added to the TOC.
+
+I wrote it, but don't use `createWholeSection.sh` much. It's more for when I just want to trash the HTML/PDF folder and start fresh from the relevant Markdown folder. 
+
+### ToDo
+
+I'd really like to add some sort of `dialog` commands to the shell scripts, but haven't figured out how yet. This would save having to reach for a mouse (to highlight/copy things at the `read -ep` prompts). 
+
+I'd also like to implement search, but haven't gotten there yet either. If anyone's got something that would work, feel free to implement and document it.
+
+### In Closing
+
+All of the commands I think anyone would need are in one of these shell scripts, but you may have to play around to make them fit your own workflow. Check out the Markdown file in the `./md/1` and its corresponding `./1` HTML/PDF directory for examples of what I've done in the CSS. Take it and run with it. I'm curious to see what other folks can make it do.
+
+There are also a few more templates that aren't called in any of the scripts. THey're just different layouts I have been dorking with.
 
 Enjoy, keep in touch, and try to stay out of the news.
